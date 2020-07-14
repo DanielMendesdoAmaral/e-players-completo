@@ -1,0 +1,46 @@
+<!--Criamos a página Notícia-->
+@model Noticia 
+@{
+    //Nossa View passa-se a se chamar Noticias.
+    ViewData["Title"] = "Noticias";
+}
+
+<!--Criamos um formulário, que vai chamar o método Cadastrar do NoticiaController.-->
+<form action="@Url.Action("Cadastrar")" method="POST">
+    <!--Este método, Cadastrar, vai ler todos os inputs e vai criar o objeto. Vai cadastrar o objeto no bd. Uma viewbag vai ler todos os cadastros. Em seguida, printamos esta viewbag.-->
+
+    <label for="IdNoticia">Id</label>
+    <input type="number" name="IdNoticia" id="IdNoticia">
+
+    <label for="Titulo">Titulo</label>
+    <input type="text" name="Titulo" id="Titulo">
+
+    <label for="Texto">Texto</label>
+    <input type="text" name="Texto" id="Texto" size="50">
+
+    <label for="Imagem">Imagem</label>
+    <input type="text" name="Imagem" id="Imagem">
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+<!--Agora cria-se uma tabela e printamos todos valores de nossa ViewBag.-->
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Texto</th>
+        <th>Imagem</th>
+    </thead>
+    <tbody>
+        @foreach(var item in ViewBag.Noticias) {
+            <tr>
+                <td>@item.IdNoticia</td>
+                <td>@item.Titulo</td>
+                <td>@item.Texto</td>
+                <td>@item.Imagem</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+<!-- Cria um local chamado Equipe, usando a sintaxe Razor, que é o arroba -->
+
+@model Equipe 
+@{
+    //Nossa ViewData, nossa View, chama-se Equipes.
+    ViewData["Title"] = "Equipes";
+}
+
+<!-- Este form usa um método do controller, chamado Cadastrar. Nele, pegamos os valores dos inputs e cadastramos no banco de dados. -->
+<form action="@Url.Action("Cadastrar")" method="POST">
+
+    <label for="IdEquipe">Id</label>
+    <input type="text" name="IdEquipe" id="IdEquipe">
+
+    <label for="Nome">Nome</label>
+    <input type="text" name="Nome" id="Nome">
+
+    <label for="Imagem">Imagem</label>
+    <input type="text" name="Imagem" id="Imagem">
+
+    <!-- Ao clicar em um botão submit, concluímos a ação. -->
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+<!-- Percorremos nossa viewbag e adicionamos cada valor em nossa tabela. Nossa viewbag.Equipes é preenchida no método cadastrar e preenchida no bloco de código acima. -->
+<table>
+
+    <thead>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Imagem</th>
+    </thead>
+    <tbody>
+        @foreach(var item in ViewBag.Equipes) {
+            <tr>
+                <td>@item.IdEquipe</td>
+                <td>@item.Nome</td>
+                <td>@item.Imagem</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

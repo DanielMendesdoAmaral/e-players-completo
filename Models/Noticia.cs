@@ -12,7 +12,7 @@ namespace e_players_completo.Models
         public string Titulo { get; set; }
         public string Texto { get; set; }
         public string Imagem { get; set; }
-        public const string PATH = "Database/noticia.cs";
+        public const string PATH = "Database/noticia.csv";
 
         //CONSTRUTOR
         public Noticia() {
