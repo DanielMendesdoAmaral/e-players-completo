@@ -6,11 +6,11 @@
 }
 
 <!--Criamos um formulário, que vai chamar o método Cadastrar do NoticiaController.-->
-<form action="@Url.Action("Cadastrar")" method="POST">
+<form action="@Url.Action("Cadastrar")" method="POST" enctype="multipart/form-data"> <!--Usamos POST pois é melhor e mais seguro. Quando há envio de arquivos, precisa-se usar este enctype.-->
     <!--Este método, Cadastrar, vai ler todos os inputs e vai criar o objeto. Vai cadastrar o objeto no bd. Uma viewbag vai ler todos os cadastros. Em seguida, printamos esta viewbag.-->
 
     <label for="IdNoticia">Id</label>
-    <input type="number" name="IdNoticia" id="IdNoticia">
+    <input type="number" name="IdNoticia" id="IdNoticia"> <!--Este name tem que ser igual ao colocado no c#-->
 
     <label for="Titulo">Titulo</label>
     <input type="text" name="Titulo" id="Titulo">
@@ -19,14 +19,14 @@
     <input type="text" name="Texto" id="Texto" size="50">
 
     <label for="Imagem">Imagem</label>
-    <input type="text" name="Imagem" id="Imagem">
+    <input type="file" name="Imagem" id="Imagem"> <!--type= file-->
 
     <button type="submit">Cadastrar</button>
 
 </form>
 
 <!--Agora cria-se uma tabela e printamos todos valores de nossa ViewBag.-->
-<table>
+<table class="table table-striped table-responsive">
     <thead>
         <th>Id</th>
         <th>Titulo</th>
@@ -39,7 +39,9 @@
                 <td>@item.IdNoticia</td>
                 <td>@item.Titulo</td>
                 <td>@item.Texto</td>
-                <td>@item.Imagem</td>
+                <td><img src="img/Noticias/@item.Imagem" alt="Imagem da notícia @item.Titulo"></td>
+                @*Comentário em Razor-> Vai usar o controlador de Noticia, o método Excluir deste controlador, e vai atribuir o valor à rota.*@
+                <td><a asp-controller="Noticia" asp-action="Excluir" asp-route-id="@item.IdNoticia">Excluir</a></td>
             </tr>
         }
     </tbody>
