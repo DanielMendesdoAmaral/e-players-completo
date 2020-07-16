@@ -20521,11 +20521,6 @@
   "RootNamespace": "e_players_completo",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Juninho\\Desktop\\Códigos Daniel\\e-players-completo\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\Juninho\\Desktop\\Códigos Daniel\\e-players-completo\\Views\\Noticia\\Index.cshtml",
       "TargetPath": "Views\\Noticia\\Index.cshtml",
       "FileKind": "mvc"

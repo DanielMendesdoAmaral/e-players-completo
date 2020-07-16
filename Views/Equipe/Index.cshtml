@@ -6,20 +6,30 @@
     ViewData["Title"] = "Equipes";
 }
 
+<div class="titulo_pagina">
+    <h1>cadastro de @ViewData["Title"]</h1>
+</div>
+
 <!-- Este form usa um método do controller, chamado Cadastrar. Nele, pegamos os valores dos inputs e cadastramos no banco de dados. -->
-<form action="@Url.Action("Cadastrar")" method="POST" enctype="multipart/form-data"> <!--Usamos POST pois é melhor e mais seguro. Quando há envio de arquivos, precisa-se usar este enctype.-->
+<form class="cadastro" action="@Url.Action("Cadastrar")" method="POST" enctype="multipart/form-data"> <!--Usamos POST pois é melhor e mais seguro. Quando há envio de arquivos, precisa-se usar este enctype.-->
 
-    <label for="IdEquipe">Id</label>
-    <input type="text" name="IdEquipe" id="IdEquipe">
-
-    <label for="Nome">Nome</label>
-    <input type="text" name="Nome" id="Nome">
-
-    <label for="Imagem">Imagem</label>
-    <input type="file" name="Imagem" id="Imagem"> <!--type= file-->
+    <div class="campo">
+        <label for="IdEquipe">Id</label>
+        <input type="text" name="IdEquipe" id="IdEquipe">
+    </div>
+    
+    <div class="campo">
+        <label for="Nome">Nome</label>
+        <input type="text" name="Nome" id="Nome">
+    </div>
+    
+    <div class="campo">
+        <label for="Imagem">Imagem</label>
+        <input type="file" name="Imagem" id="Imagem"> <!--type= file-->
+    </div>
 
     <!-- Ao clicar em um botão submit, concluímos a ação. -->
-    <button type="submit">Cadastrar</button>
+    <button class="gradient btn" type="submit">Cadastrar</button>
 
 </form>
 
@@ -38,7 +48,7 @@
                 <td>@item.Nome</td>
                 <td><img src="img/Equipes/@item.Imagem" alt="Imagem da equipe @item.Nome" width="40"></td>
                 @*Comentário em Razor-> Vai usar o controlador de Equipe, o método Excluir deste controlador, e vai atribuir o valor à rota.*@
-                <td><a asp-controller="Equipe" asp-action="Excluir" asp-route-id="@item.IdEquipe">Excluir</a></td>
+                <td><a asp-controller="Equipe" asp-action="Excluir" asp-route-id="@item.IdEquipe"> <i class="fa fa-trash"></i> </a></td>
             </tr>
         }
     </tbody>
